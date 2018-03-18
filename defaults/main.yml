@@ -1,0 +1,6 @@
+---
+package_ubuntu_extras_repository: false
+package_ubuntu_partner_repository: false
+package_ubuntu_multiverse_repository: false
+package_install_packages: []
+package_delete_packages: []
