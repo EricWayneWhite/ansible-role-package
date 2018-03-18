@@ -1,0 +1,8 @@
+---
+- name: Ensure default packages are installed
+  yum: pkg={{item}} state=installed
+  with_items: "{{package_install_packages}}"
+
+- name: Ensure packages are deleted
+  yum: pkg={{item}} state=absent
+  with_items: "{{package_delete_packages}}"

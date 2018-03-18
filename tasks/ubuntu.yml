@@ -1,2 +1,21 @@
 ---
+ - name: Add extra repository
+   apt: pkg=ubuntu-restricted-extras state=installed
+   when: package_ubuntu_extras_repository
+
+ - name: Add partner repository
+   apt_repository: repo="{{item}}"
+   with_items:
+     - "deb http://archive.canonical.com/ubuntu {{ansible_distribution_release}} partner"
+     - "deb-src http://archive.canonical.com/ubuntu {{ansible_distribution_release}} partner"
+   when: package_ubuntu_partner_repository
+
+ - name: Add multiverse repository
+   apt_repository: repo="{{item}}"
+   with_items:
+     - "deb http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}} multiverse"
+     - "deb-src http://archive.ubuntu.com/ubuntu/  {{ansible_distribution_release}} multiverse"
+     - "deb http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}}-updates multiverse"
+     - "deb-src http://archive.ubuntu.com/ubuntu/  {{ansible_distribution_release}}-updates multiverse"
+   when: package_ubuntu_multiverse_repository
 

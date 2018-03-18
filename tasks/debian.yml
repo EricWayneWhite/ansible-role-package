@@ -1,0 +1,11 @@
+---
+- name: Ensure apt cache is up to date
+  apt: update_cache=yes
+
+- name: Ensure default packages are installed
+  apt: pkg={{item}} state=installed
+  with_items: "{{package_install_packages}}"
+
+- name: Ensure packages are deleted
+  apt: pkg={{item}} state=absent
+  with_items: "{{package_delete_packages}}"
