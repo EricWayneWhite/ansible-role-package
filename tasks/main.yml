@@ -1,0 +1,15 @@
+---
+- name: Rules for Ubuntu
+  include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: ["packages", "package"]
+
+- name: Rules for Debian OS family
+  include: debian.yml
+  when: ansible_os_family == 'Debian'
+  tags: ["packages", "package"]
+
+- name: Rules for RedHat OS family
+  include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+  tags: ["packages", "package"]
